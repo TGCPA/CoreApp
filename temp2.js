@@ -1,9 +1,8 @@
-var resourceDieObj;
-var previousRollsSample = [
-    2,
-    3,
-    4
-];
+
+
+var previousRollsArray = []; //this will be updated each time rollResourceDie is called
+
+var rerolledThisCycle = false;
 
 function rollResourceDice(previousRolls) {
     //first things first, check the paramater passed:
@@ -17,7 +16,8 @@ function rollResourceDice(previousRolls) {
 
     //call rollDie and update the object
     var rerollcounter = 0;
-    resourceDieObj = {
+    
+     resourceDieObj = {
         A:{
             die1:rollDie(6),
             die2:rollDie(6),
@@ -51,11 +51,10 @@ function rollResourceDice(previousRolls) {
                 this.die2 = rollDie(6);
             }
         },
-        rerolledThisCycle:false,
         totalSums:function(){
-            return `${this.A.sum}, ${this.B.sum}, ${this.C.sum}`;
+            return [this.A.sum(), this.B.sum(), this.C.sum()];
         }
-    };
+    }; 
 
     //now, time to check the results
     /* first, we're going to see if any of the rolls are equal to the previousRolls. then, we check to see if 
@@ -64,56 +63,91 @@ function rollResourceDice(previousRolls) {
     */
 
     //declare the functions
-    function filterPreviousRolls({A, B, C, rerolledThisCycle}) {
+    function filterPreviousRolls(previousRolls, {A, B, C}) {
+        if(rerolledThisCycle) rerolledThisCycle = false;
+        console.log('previousRoll before\n' +rerolledThisCycle);
+
         //loop thru the previousRolls
         for(var i=0; i < previousRolls.length; i++) {
-            if(A.sum == previousRolls[i]) {
+            if(A.sum() == previousRolls[i]) {
+                console.log(A.sum() +' is equal to ' +previousRolls[i]);
                 A.reroll();
                 rerolledThisCycle = true;
                 continue;
-            }
-            if(B.sum == previousRolls[i]) {
+            } 
+            if(B.sum() == previousRolls[i]) {
+                console.log(B.sum() +' is equal to ' +previousRolls[i]);
                 B.reroll();
                 rerolledThisCycle = true;
                 continue;
-            }
-            if(C.sum == previousRolls[i]) {
+            } 
+            if(C.sum() == previousRolls[i]) {
+                console.log(C.sum() +' is equal to ' +previousRolls[i]);
                 C.reroll();
                 rerolledThisCycle = true;
                 continue;
-            }
+            } 
+            
+            //no need to use else, otherwise if one statement returns true it will skip the others. 
+            //because we defined rerolledThisCycle to be false, it will remain false if no conditions were met.
+            
+            console.log('previousRoll after\n' +rerolledThisCycle);
         }
+    
+        console.log(rerolledThisCycle);
     }
-    function filterEqualRolls({A, B, C, rerolledThisCycle}) {
-        if(A.sum == B.sum) { //check 1st condition
+    
+    function filterEqualRolls({A, B, C}) {
+        if(rerolledThisCycle) rerolledThisCycle = false;
+        console.log('equalRoll before\n' +rerolledThisCycle);
+
+        if(A.sum() == B.sum()) { //check 1st condition
+            console.log(A.sum() +' is equal to ' +B.sum());
             A.reroll();
             rerolledThisCycle = true;
-        } else
-        if(B.sum == C.sum) { //check 2nd condition
+        } 
+        if(B.sum() == C.sum()) { //check 2nd condition
+            console.log(B.sum() +' is equal to ' +C.sum());
             B.reroll();
             rerolledThisCycle = true;
-        } else
-        if(A.sum == C.sum) { //finish the last condition
+        } 
+        if(A.sum() == C.sum()) { //finish the last condition
+            console.log(A.sum() +' is equal to ' +C.sum());
             C.reroll(); 
             rerolledThisCycle = true;
-        } else rerolledThisCycle = false;
+        }
+        //no need to use else, otherwise if one statement returns true it will skip the others. 
+        //because we defined rerolledThisCycle to be false, it will remain false if no conditions were met.
+
+        console.log('equalRoll after\n' +rerolledThisCycle);
     }
 
     //call the functions
-    filterPreviousRolls(resourceDieObj);
+    filterPreviousRolls(previousRolls, resourceDieObj);
     filterEqualRolls(resourceDieObj);
-
+    console.log(rerolledThisCycle);
+    
     //now, we need to check if any rerolls occured
     do {
         rerollcounter++;
-        filterPreviousRolls(resourceDieObj); //call the functions again
-        filterEqualRolls(resourceDieObj);
-    } while(resourceDieObj.rerolledThisCycle == true) //if a reroll occured
+        console.log(`Calling filterpreviousrolls ${rerollcounter}`);
+        filterPreviousRolls(previousRolls, resourceDieObj);    //call the functions again
+    } while(rerolledThisCycle);
+
+    do {
+        rerollcounter++;
+        console.log(`Calling filterEqualRolls ${rerollcounter}`);
+        filterEqualRolls(resourceDieObj);       //call the functions again
+    } while(rerolledThisCycle);
 
     console.log(rerollcounter);
     var asd = resourceDieObj.totalSums();
     console.log(asd);
+
+    //lastly, time to update the previousRollsArray
+    previousRollsArray = resourceDieObj.totalSums();
 }
+
 
 function rollDie(sides) {
     if(sides == NaN) return console.log(sides +'is not a number');
