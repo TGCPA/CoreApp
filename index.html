@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resource Roll</title>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Copse');
+            @import url('https://fonts.googleapis.com/css?family=Niramit:200,300');
+            body {
+                background-color: lightgray;
+                height:100%;
+                width:100%;
+            }
+            .row {
+            	margin-bottom: -50px;
+            }
+            .sum-text {
+                font-family: 'Copse', serif;
+                display:inline-block;
+                font-size: 60px;
+            }
+            .dice {
+                padding: 5px;
+            }
+            .btn {
+            	border: none;
+            	font-family: 'Niramit';
+            	font-size: 20px;
+            	background: none;
+            	cursor: pointer;
+            	padding: 20px 70px;
+            	display: inline-block;
+            	text-transform: uppercase;
+            	letter-spacing: 1px;
+            	font-weight: 300;
+            	outline: none;
+            	position: relative;
+            	-webkit-transition: all 0.3s;
+            	-moz-transition: all 0.3s;
+            	transition: all 0.3s;
+            }
+
+            .btn:after {
+            	content: '';
+            	position: absolute;
+            	z-index: -1;
+            	-webkit-transition: all 0.3s;
+            	-moz-transition: all 0.3s;
+            	transition: all 0.3s;
+            }
+                        .btn-2 {
+                            background: #cb4e4e;
+            	color: #fff;
+            	box-shadow: 0 6px #ab3c3c;
+            	-webkit-transition: none;
+            	-moz-transition: none;
+            	transition: none;
+                        }
+                        .btn-2g {
+            	border-radius: 40px;
+            }
+
+            .btn-2g:hover {
+            	box-shadow: 0 4px #ab3c3c;
+            	top: 2px;
+            }
+
+            .btn-2g:active {
+            	box-shadow: 0 0 #ab3c3c;
+            	top: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="js/resourceRoll.js"></script>
+
+        <div id="wrapper" align="center">
+            <div class="row" id="row1"><img class="dice red"><img class="dice yellow"><p class="sum-text">= <span id="sum1"></span></p></div>
+            <div class="row" id="row2"><img class="dice blue"><img class="dice blue"><p class="sum-text">= <span id="sum2"></span></p></div>
+            <div class="row" id="row3"><img class="dice green"><img class="dice green"><p class="sum-text">= <span id="sum3"></span></p></div>
+            <div id="button-wrapper"><button id="roll-button" class="btn btn-2 btn-2g">Roll Resource Dice</button></div>
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('roll-button').addEventListener("click", () => {
+                rollResourceDice(previousRollsArray);
+                updateDiceDisplay(resourceDieObj);
+            });
+        </script>
+    </body>
+</html>
