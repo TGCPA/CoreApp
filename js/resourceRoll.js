@@ -1,6 +1,7 @@
 var previousRollsArray = []; //this will be updated each time rollResourceDie is called
 var resourceDieObj;
 var rerolledThisCycle = false;
+var eDieRes;
 
 function rollResourceDice(previousRolls) {
     //first things first, check the paramater passed:
@@ -145,6 +146,16 @@ function rollResourceDice(previousRolls) {
     previousRollsArray = resourceDieObj.totalSums();
 }
 
+function rollEventDice(){
+    //var eDieRes is defined globally
+    var num = rollDie(6);
+    if(num <= 3) eDieRes = "barbarians";    //50% chance for barbarians
+    if(num == 4) eDieRes = "green";         //16% for green castle
+    if(num == 5) eDieRes = "blue";          //16% for blue castle
+    if(num == 6) eDieRes = "yellow";        //16% for yellow castle
+}
+
+
 function updateDiceDisplay({A, B, C}) { //purpose of function: visualize the results of rollResourceDice
     //define the variables of the elements
     var redDiceImgElement, yellowDiceImgElement, blueDiceImgElement, greenDiceImgElement;
@@ -191,6 +202,16 @@ function updateDiceDisplay({A, B, C}) { //purpose of function: visualize the res
     //end
     //logging:
     console.log(diceImg);
+
+    //event die:
+    //first, grab the global variable "eDieRes"
+    //second, call the image based off that variable's value
+    //lastly, update the html element with the new image
+    
+    var eDieImg = `img/dice-face/event/${eDieRes}.PNG`;
+    document.getElementsByClassName('event')[0].src = eDieImg;
+    console.log(eDieImg);
+    //end
 }
 
 
