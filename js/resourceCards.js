@@ -399,4 +399,49 @@ const resourceCards = [
         expansion:"AGR",
         unlockedAt:11
     },
+
+    //okay, next in AGR is spice
+    //fortunately there aren't a whole lot of spice cards
+
+    {
+        id:"spice",
+        name:"Spice",
+        productType:"base",
+        parent:null,
+        parentId:null,
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:0
+    },
+    {
+        id:"nutmeg",
+        name:"Nutmeg",
+        productType:"premium",
+        parent:"Spice",
+        parentId:"spice",
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:0
+    },
+    
+    {
+        id:"cinnamon",
+        name:"Cinnamon",
+        productType:"premium",
+        parent:"Spice",
+        parentId:"spice",
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:2
+    },
+    {
+        id:"sugar",
+        name:"Sugar",
+        productType:"unique",
+        parent:null,
+        parentId:null,
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:0
+    },
 ];
