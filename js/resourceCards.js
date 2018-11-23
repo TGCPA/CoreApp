@@ -423,7 +423,6 @@ const resourceCards = [
         expansion:"AGR",
         unlockedAt:0
     },
-    
     {
         id:"cinnamon",
         name:"Cinnamon",
@@ -442,6 +441,39 @@ const resourceCards = [
         parentId:null,
         hex:"spice",
         expansion:"AGR",
-        unlockedAt:0
+        unlockedAt:3
     },
+    {
+        id:"pepper",
+        name:"Pepper",
+        productType:"premium",
+        parent:"Spice",
+        parentId:"spice",
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:4
+    },
+    {
+        id:"tobacco",
+        name:"Tobacco",
+        productType:"premium",
+        parent:"Spice",
+        parentId:"spice",
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:6
+    },
+    {
+        id:"rosemary",
+        name:"Rosemary",
+        productType:"premium",
+        parent:"Spice",
+        parentId:"spice",
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:6
+    }
+
+    //SPICES are done
+    //that completes AGR
 ];
