@@ -290,3 +290,12 @@ const piles = {
         []
     ]
 };
+
+/*
+function outline:
+get objects from resourceCards array
+find specific objects with the target unlockedAt property and the target type (standard/premium)
+combine those objects into a new array
+randomize that array with Array.sort() 
+repeat this 8 times for 8 piles
+*/
