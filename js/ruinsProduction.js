@@ -16,14 +16,10 @@ function pileFilter(card) {
     // params:
     // minTier = Number
     // maxTier = Number
-    // type = "standard" || "premium"
-    return (card.type == this.type) && (this.minTier <= card.unlockedAt <= this.maxTier);
+    // productType = "standard" || "premium"
+    //console.log(this);
+    //console.log(card);
+    return (card.productType == this.productType) && (this.minTier <= card.unlockedAt <= this.maxTier);
 }
 
-function compareADS(param1) {
-    console.log(param1);
-    console.log(this);
-    return param1 == this[1];
-}
-
-piles.standard[0] = resourceCards.filter(pileFilter, {minTier:0, maxTier:3, type:"standard"});
+piles.standard[0] = resourceCards.filter(pileFilter, {minTier:0, maxTier:3, productType:"standard"});
