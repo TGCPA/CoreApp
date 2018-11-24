@@ -68,8 +68,9 @@ function pileFilter(card) {
 
 //this is the basic shufflePile function that is going to be used for initial shuffles and reshuffles
 function shufflePile(pileType, pileNumber) {
+    console.log(pileNumber +'before');
     pileNumber--; //subtract one from pileNumber (Array zero index)
-
+    console.log(pileNumber +' after');
     //first up, define the array that is going to hold the reshuffled cards
     var shuffledArray = [];
 
@@ -77,29 +78,35 @@ function shufflePile(pileType, pileNumber) {
         //ok, do you see what I did here? since each pile has a different number
         //of conditions that need to be met, we have to get the number of conditions
         //from the pileSpecs object. 
-        var newContents = resourceCards.filter(pileFilter, pileSpecs[pileType][i]);
+        var newContents = resourceCards.filter(pileFilter, pileSpecs[pileType][pileNumber][i]);
+        console.log(newContents);
         shuffledArray.push(...newContents);
+        console.log(shuffledArray);
         //the above operation takes the current specs and filters them thru resourceCards,
         //the takes the resulting array values and pushes those values to shuffledArray
         //we use spread syntax (...) b/c we don't want to push the whole array, just its values
 
         //the next step is to look at how many of each card should be in the array
         //for that, I made this function:
-        shuffledArray = copyArrayContents(shuffledArray, pileSpecs[pileType][pileNumber]);
+        shuffledArray = copyArrayContents(shuffledArray, pileSpecs[pileType][pileNumber].length);
+        console.log(shuffledArray);
         //we will repeat the above operation for each pileSpecs.
     }
 
     //okay, the shuffledArray variable has all the cards in order of tier. now we need to actually shuffle it
+    console.log(shuffledArray);
     shuffledArray.sort(function(a, b){return 0.5 - Math.random()});
-
+    console.log(shuffledArray);
     //now we need to update the piles variable with the new cards that have been shuffled
     piles[pileType][pileNumber] = shuffledArray;
 }
 
 function copyArrayContents(a, timesToBeCopied) {
     var b = [];
-    for(var i=0; i < timesToBeCopied; i++) {
+    console.log(...a);
+    for(var i=0; i <= timesToBeCopied; i++) {
         b.push(...a);
+        console.log(b);
     }
     return b;
 }
