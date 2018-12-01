@@ -7,7 +7,7 @@ const resourceCards = [
     {
         id:"",              //all lowercase
         name:"",            //display name 
-        productType:"",     //unique, premium, standard, base
+        productType:"",     //premium, standard, base
         parent:"",          //null if base, otherwise parent display name
         parentId:"",        //same as above, except parent ID instead of DN
         hex:"",             //all lowercase
@@ -106,11 +106,21 @@ const resourceCards = [
         unlockedAt:4
     },
     {
+        id:"cotton-sprig",
+        name:"Cotton Sprig",
+        productType:"base",
+        parent:null,
+        parentId:null,
+        hex:"fields",
+        expansion:"AGR",
+        unlockedAt:4
+    },
+    {
         id:"cotton",
         name:"Cotton",
-        productType:"unique",
-        parent:"Cotton",
-        parentId:"cotton",
+        productType:"premium",
+        parent:"Cotton Sprig",
+        parentId:"cotton-sprig",
         hex:"fields",
         expansion:"AGR",
         unlockedAt:4
@@ -434,11 +444,21 @@ const resourceCards = [
         unlockedAt:2
     },
     {
-        id:"sugar",
-        name:"Sugar",
-        productType:"unique",
+        id:"sugar-cane",
+        name:"Sugar Cane",
+        productType:"base",
         parent:null,
         parentId:null,
+        hex:"spice",
+        expansion:"AGR",
+        unlockedAt:3
+    },
+    {
+        id:"sugar",
+        name:"Sugar",
+        productType:"premium",
+        parent:"Sugar Cane",
+        parentId:"sugar-cane",
         hex:"spice",
         expansion:"AGR",
         unlockedAt:3
@@ -579,11 +599,21 @@ const resourceCards = [
         unlockedAt:9
     },
     {
-        id:"acacia",
-        name:"Acacia",
-        productType:"unique",
+        id:"acacia-wood",
+        name:"Acacia Wood",
+        productType:"base",
         parent:null,
         parentId:null,
+        hex:"forest",
+        expansion:"IND",
+        unlockedAt:10
+    },
+    {
+        id:"acacia-plank",
+        name:"Acacia Plank",
+        productType:"premium",
+        parent:"Acacia Wood",
+        parentId:"acacia-wood",
         hex:"forest",
         expansion:"IND",
         unlockedAt:10
@@ -614,9 +644,19 @@ const resourceCards = [
     {
         id:"stone",
         name:"Stone",
-        productType:"unique",
+        productType:"base",
         parent:null,
         parentId:null,
+        hex:"hills",
+        expansion:"IND",
+        unlockedAt:1
+    },
+    {
+        id:"cobblestone",
+        name:"Cobblestone",
+        productType:"standard",
+        parent:"Stone",
+        parentId:"stone",
         hex:"hills",
         expansion:"IND",
         unlockedAt:1
@@ -706,7 +746,7 @@ const resourceCards = [
     {
         id:"coins",
         name:"Coins",
-        productType:"standard",
+        productType:"premium",
         parent:"Ore",
         parentId:"ore",
         hex:"mountain",
