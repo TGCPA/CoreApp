@@ -692,8 +692,8 @@ const resourceCards = [
         unlockedAt:5
     },
     {
-        id:"tiles",
-        name:"Tiles",
+        id:"tile",
+        name:"Tile",
         productType:"standard",
         parent:"Clay",
         parentId:"clay",
