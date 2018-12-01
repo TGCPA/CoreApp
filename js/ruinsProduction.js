@@ -86,6 +86,7 @@ function shufflePile(pileType, pileNumber) {
         
         //the next step is to look at how many of each card should be in the array
         //for that, I made this function:
+        
         newContents = copyArrayContents(newContents, pileSpecs[pileType][pileNumber][i].numberOfEach - 1);
         console.log(newContents);
 
@@ -100,13 +101,24 @@ function shufflePile(pileType, pileNumber) {
 
     //okay, the shuffledArray variable has all the cards in order of tier. now we need to actually shuffle it
     console.log(unshuffledArray);
-    shuffledArray = unshuffledArray.sort(function(a, b){return 0.5 - Math.random()});
-    console.log(shuffledArray);
+    //console.log(shuffledArray.map(card => card.name).sort(function(a, b){
+    //    if(a < b) { return -1; }
+    //    if(a > b) { return 1; }
+    //    return 0;
+    //}));
+    //the above commented function shows me that the correct number of each card is present
+
     //now we need to update the piles variable with the new cards that have been shuffled
-    piles[pileType][pileNumber] = shuffledArray;
+    piles[pileType][pileNumber] = unshuffledArray;
+
+    //end
+    //so what's interesting is that my copyArrayContents function is actually shuffling 
+    //the array for me. It's really odd, but I guess if it isn't broke, there's no need
+    //to fix it lol. Perhaps I can study this when I'm more experienced?
 }
 
 function copyArrayContents(a, timesToBeCopied) {
+    //little array copier I made from scratch
     var b = [];
     console.log(...a);
     for(var i=0; i <= timesToBeCopied; i++) {
@@ -116,3 +128,6 @@ function copyArrayContents(a, timesToBeCopied) {
     }
     return b;
 }
+
+//okay, the final thing is to create a function that actually
+//draws the cards.
