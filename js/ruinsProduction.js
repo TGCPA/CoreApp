@@ -132,5 +132,12 @@ function copyArrayContents(a, timesToBeCopied) {
 //okay, the final thing is to create a function that actually
 //draws the cards and connects that to the HTML display
 function drawCard(pileType, pileNumber) {
+    var currentCard;
+    currentCard = piles[pileType][pileNumber][0];   //get the top card
+    piles[pileType][pileNumber].shift();            //remove the top card from the pile
+    return currentCard;
+}
+
+function updateCardDisplay(card) {
     
 }
