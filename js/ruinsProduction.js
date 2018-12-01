@@ -130,4 +130,7 @@ function copyArrayContents(a, timesToBeCopied) {
 }
 
 //okay, the final thing is to create a function that actually
-//draws the cards.
+//draws the cards and connects that to the HTML display
+function drawCard(pileType, pileNumber) {
+    
+}
