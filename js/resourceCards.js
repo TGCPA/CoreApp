@@ -823,6 +823,6 @@ const resourceCards = [
         parentId:null,
         hex:"volcano",
         expansion:"ND",
-        unlockedAt:null
+        unlockedAt:0
     }
 ];
