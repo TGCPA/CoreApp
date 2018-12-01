@@ -812,5 +812,17 @@ const resourceCards = [
         hex:"mountain",
         expansion:"IND",
         unlockedAt:10
+    },
+
+    //ash
+    {
+        id:"ash",
+        name:"Ash",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"volcano",
+        expansion:"ND",
+        unlockedAt:null
     }
 ];
