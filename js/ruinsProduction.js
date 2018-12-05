@@ -132,6 +132,7 @@ function copyArrayContents(a, timesToBeCopied) {
 //okay, the final thing is to create a function that actually
 //draws the cards and connects that to the HTML display
 function drawCard(pileType, pileNumber) {
+    pileNumber--; // this command right here is an error waiting to happen LOL
     var currentCard;
     currentCard = piles[pileType][pileNumber][0];   //get the top card
     piles[pileType][pileNumber].shift();            //remove the top card from the pile
@@ -139,5 +140,6 @@ function drawCard(pileType, pileNumber) {
 }
 
 function updateCardDisplay(card) {
-    
+    var cardSrc = `img/resource-cards/${card.expansion}/${card.hex}/${card.id}.jpg`;
+    return document.getElementById('card-image').setAttribute('src', cardSrc);
 }

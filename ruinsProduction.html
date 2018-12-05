@@ -14,6 +14,14 @@
             #btn-row2 {
                 float:right;
             }
+
+            #card-display {
+                display: none;
+            }
+
+            #card-image {
+                width:150px;
+            }
         </style>
         <script src="js/resourceCards.js"></script>
         <script src="js/ruinsProduction.js"></script>
@@ -39,21 +47,118 @@
             with the 8 buttons
         -->
         <div id="wrapper">
-            <div id="btn-row1" class="btn-row">
-                <button id="btn-S1" class="btn" onclick:"loadPage(this.id)">S1</button>
-                <button id="btn-S2" class="btn">S2</button>
-                <button id="btn-S3" class="btn">S3</button>
-                <button id="btn-S4" class="btn">S4</button>
+            <div id="home">
+                <div id="btn-row1" class="btn-row">
+                    <button id="btn-S1" class="btn" onclick="updatePage(this.id.slice(4))">S1</button>
+                    <button id="btn-S2" class="btn" onclick="updatePage(this.id.slice(4))">S2</button>
+                    <button id="btn-S3" class="btn" onclick="updatePage(this.id.slice(4))">S3</button>
+                    <button id="btn-S4" class="btn" onclick="updatePage(this.id.slice(4))">S4</button>
+                </div>
+                <div id="btn-row2" class="btn-row">
+                    <button id="btn-P1" class="btn" onclick="updatePage(this.id.slice(4))">P1</button>
+                    <button id="btn-P2" class="btn" onclick="updatePage(this.id.slice(4))">P2</button>
+                    <button id="btn-P3" class="btn" onclick="updatePage(this.id.slice(4))">P3</button>
+                    <button id="btn-P4" class="btn" onclick="updatePage(this.id.slice(4))">P4</button>
+                </div>
             </div>
-            <div id="btn-row2" class="btn-row">
-                <button id="btn-P1" class="btn">P1</button>
-                <button id="btn-P2" class="btn">P2</button>
-                <button id="btn-P3" class="btn">P3</button>
-                <button id="btn-P4" class="btn">P4</button>
+
+            <div id="card-display">
+                <div id="card-image-wrapper">
+                    <img id="card-image">    
+                </div>
+
+                <div id="btn-row-hor">
+                    <button id="shuffle-pile-btn" class="card-display-btn" onclick="">Shuffle</button>
+                    <button id="draw-pile-btn" class="card-display-btn" onclick="">Draw</button>
+                </div>
             </div>
+
         </div>
         <script>
-            
+            var previousPage = "home";
+            var home = document.getElementById('home');
+            var cardDisplay = document.getElementById('card-display');
+            const cardDisplayTemplate = `
+                <div id="card-image-wrapper">
+                    <img id="card-image">    
+                </div>
+
+                <div id="btn-row-hor">
+                    <button id="shuffle-pile-btn" class="card-display-btn" onclick="">Shuffle</button>
+                    <button id="draw-pile-btn" class="card-display-btn" onclick="">Draw</button>
+                </div>
+            `;
+            const pilesToPage = {
+                S1:function() {
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("standard", 1);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("standard", 1));');
+                },
+                S2:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("standard", 2);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("standard", 2));');
+                },
+                S3:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("standard", 3);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("standard", 3));');
+                },
+                S4:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("standard", 4);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("standard", 4));');
+                },
+                P1:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("premium", 1);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("premium", 1));');
+                },
+                P2:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("premium", 2);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("premium", 2));');
+                },
+                P3:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("premium", 3);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("premium", 3));');
+                },
+                P4:function(){
+                    //hide homepage
+                    home.style.display = "none";
+
+                    cardDisplay.style.display = "initial";  //make the element we're working with visible
+                    document.getElementById('shuffle-pile-btn').setAttribute('onclick', 'shufflePile("premium", 4);');
+                    document.getElementById('draw-pile-btn').setAttribute('onclick', 'updateCardDisplay(drawCard("premium", 4));');
+                }
+            }
+
+            function updatePage(newPage) {
+                if(pilesToPage[newPage]) pilesToPage[newPage]();
+                else return alert('error, contact a developer');    
+            }
         </script>
     </body>
 </html>
