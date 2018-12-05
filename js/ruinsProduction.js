@@ -108,13 +108,18 @@ function shufflePile(pileType, pileNumber) {
     //}));
     //the above commented function shows me that the correct number of each card is present
 
+    //shuffle the array
+    shuffledArray = shuffle(unshuffledArray);
+
     //now we need to update the piles variable with the new cards that have been shuffled
-    piles[pileType][pileNumber] = unshuffledArray;
+    piles[pileType][pileNumber] = shuffledArray;
 
     //end
     //so what's interesting is that my copyArrayContents function is actually shuffling 
     //the array for me. It's really odd, but I guess if it isn't broke, there's no need
     //to fix it lol. Perhaps I can study this when I'm more experienced?
+    //^ that above stuff is incorrect. I need to shuffle it myself
+    
 }
 
 function copyArrayContents(a, timesToBeCopied) {
@@ -143,3 +148,24 @@ function updateCardDisplay(card) {
     var cardSrc = `img/resource-cards/${card.expansion}/${card.hex}/${card.id}.jpg`;
     return document.getElementById('card-image').setAttribute('src', cardSrc);
 }
+
+
+function shuffle(array) { 
+    //array shuffle taken from https://github.com/coolaj86/knuth-shuffle
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
