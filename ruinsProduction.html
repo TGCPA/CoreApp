@@ -26,6 +26,10 @@
                 width:150px;
                 height: 232.5px;
             }
+
+            #back-btn {
+                width:100px;
+            }
         </style>
         <script src="js/resourceCards.js"></script>
         <script src="js/ruinsProduction.js"></script>
@@ -75,6 +79,9 @@
                     <button id="shuffle-pile-btn" class="card-display-btn" onclick="">Shuffle</button>
                     <button id="draw-pile-btn" class="card-display-btn" onclick="">Draw</button>
                 </div>
+                <div id="back-btn-wrapper">
+                    <img src="img/return.png" id="back-btn" onclick="homepage();">
+                </div>
             </div>
 
         </div>
@@ -90,6 +97,9 @@
                 <div id="btn-row-hor">
                     <button id="shuffle-pile-btn" class="card-display-btn" onclick="">Shuffle</button>
                     <button id="draw-pile-btn" class="card-display-btn" onclick="">Draw</button>
+                </div>
+                <div id="back-btn-wrapper">
+                    <img src="img/return.png" id="back-btn" onclick="homepage();">
                 </div>
             `;
             const pilesToPage = {
@@ -162,6 +172,14 @@
             function updatePage(newPage) {
                 if(pilesToPage[newPage]) pilesToPage[newPage]();
                 else return alert('error, contact a developer');    
+            }
+
+            function homepage() {
+                document.getElementById('shuffle-pile-btn').style.display = 'none';
+                document.getElementById('draw-pile-btn').style.display = 'none';
+                document.getElementById('back-btn-wrapper').style.display = 'none';
+
+                home.style.display = 'initial';
             }
         </script>
     </body>
