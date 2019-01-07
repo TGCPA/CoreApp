@@ -824,5 +824,88 @@ const resourceCards = [
         hex:"volcano",
         expansion:"ND",
         unlockedAt:0
-    }
+    },
+
+    // wilderness
+    {
+        id:"orca-skin",
+        name:"Orca Skin",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+    {
+        id:"narwhal-horn",
+        name:"Narwhal Horn",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+    {
+        id:"dolphin-brain",
+        name:"Dolphin Brain",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+    {
+        id:"whale-oil",
+        name:"Whale Oil",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+    {
+        id:"whale-blubber",
+        name:"Whale Blubber",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+    {
+        id:"whale-skin",
+        name:"Whale Skin",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+    {
+        id:"shark-teeth",
+        name:"Shark Teeth",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:"ocean",
+        expansion:"WILD",
+        unlockedAt:0
+    },
+
+    {
+        id:"croc-skin",
+        name:"Croc Skin",
+        productType:"premium",
+        parent:null,
+        parentId:null,
+        hex:null,
+        expansion:"WILD",
+        unlockedAt:0
+    },
 ];
