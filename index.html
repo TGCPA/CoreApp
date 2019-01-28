@@ -166,6 +166,14 @@
             <div class="nav-button" id="nav-button-5" ></div>
         </div>
         <script type="text/javascript">
+            document.addEventListener('keydown', function(e){
+                    if(e.code == 'Enter') {
+                        rollResourceDice(previousRollsArray);
+                        rollEventDice();
+                        updateDiceDisplay(resourceDieObj);
+                    }
+            });
+
             document.getElementById('roll-button').addEventListener("click", () => {
                 rollResourceDice(previousRollsArray);
                 rollEventDice();

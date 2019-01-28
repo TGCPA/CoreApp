@@ -86,6 +86,10 @@
 
         </div>
         <script>
+            document.addEventListener('keydown', function(e){
+                console.log(e.code);
+            });
+
             var previousPage = "home";
             var home = document.getElementById('home');
             var cardDisplay = document.getElementById('card-display');
