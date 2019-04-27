@@ -71,22 +71,19 @@ function rollResourceDice(previousRolls) {
                 console.log(A.sum() +' is equal to ' +previousRolls[i]);
                 A.reroll();
                 rerolledThisCycle = true;
-                continue;
             } 
             if(B.sum() == previousRolls[i]) {
                 console.log(B.sum() +' is equal to ' +previousRolls[i]);
                 B.reroll();
                 rerolledThisCycle = true;
-                continue;
             } 
             if(C.sum() == previousRolls[i]) {
                 console.log(C.sum() +' is equal to ' +previousRolls[i]);
                 C.reroll();
                 rerolledThisCycle = true;
-                continue;
             } 
             
-            //no need to use else, otherwise if one statement returns true it will skip the others. 
+            //no need to use else or continue/break, otherwise if one statement returns true it will skip the others. 
             //because we defined rerolledThisCycle to be false, it will remain false if no conditions were met.
             
             console.log('previousRoll after\n' +rerolledThisCycle);
