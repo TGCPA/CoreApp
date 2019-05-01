@@ -135,6 +135,14 @@ function rollResourceDice(previousRolls) {
         filterEqualRolls(resourceDieObj);       //call the functions again
     } while(rerolledThisCycle);
 
+    //BUT, since we called filterEqualRolls last, it is possible (but an edge case) that
+    //we might have roll(s) that are the same as the previous roll(s).
+    //this needs to be fixed with a final check:
+
+    function finalFilterCheck(previousRolls, {A, B, C}) {
+        //TODO: finish this
+    }
+
     console.log(rerollcounter);
     var asd = resourceDieObj.totalSums();
     console.log(asd);
